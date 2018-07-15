@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "ab_Address")
+@NamedQuery(name = "address.getList", query = "FROM Address ")
 public class Address implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -16,6 +17,8 @@ public class Address implements Serializable {
 
     private String street;
     private String city;
+
+//    @Column(name = "zip_code")
     private String zipCode;
 
     @OneToOne(mappedBy = "address")
@@ -63,5 +66,14 @@ public class Address implements Serializable {
 
     public void setUser_address(User user_address) {
         this.user_address = user_address;
+    }
+
+    public String toString() {
+        return "Address [" +
+                "id= " + id +
+                ", street= " + street +
+                ", zipCode= " + zipCode +
+                ", city= " + city +
+                "]";
     }
 }

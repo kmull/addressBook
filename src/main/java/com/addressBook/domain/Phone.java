@@ -56,4 +56,13 @@ public class Phone implements Serializable {
     public void setUser_phone(User user_phone) {
         this.user_phone = user_phone;
     }
+
+    @Override
+    public String toString() {
+        return "Phone [" +
+                "id= " + id +
+                ", type= " + type +
+                ", number= " + number +
+                "]";
+    }
 }

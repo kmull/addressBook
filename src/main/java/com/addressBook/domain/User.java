@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ab_User")
+@NamedQuery(name = "user.getList", query = "FROM User")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -87,6 +88,17 @@ public class User implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "User [" +
+                "id= " + id +
+                ", name= " + name +
+                ", surname= " +
+                ", age= " + age +
+                ", gender= " + gender +
+                "]";
     }
 }
 
