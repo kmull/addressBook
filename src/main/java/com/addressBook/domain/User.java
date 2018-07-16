@@ -30,10 +30,6 @@ public class User implements Serializable {
     @JoinColumn(name = "ab_address_fk")
     private Address address;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public long getId() {
         return id;
     }

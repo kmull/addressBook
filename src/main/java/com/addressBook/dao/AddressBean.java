@@ -11,7 +11,7 @@ import java.util.List;
 
 @ManagedBean(name = "addressBean", eager = true)
 public class AddressBean {
-    Logger log = LoggerFactory.getLogger(AddressBean.class);
+    private Logger log = LoggerFactory.getLogger(AddressBean.class);
 
     @Inject
     private AddressRepository addressRepository;

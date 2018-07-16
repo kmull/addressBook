@@ -12,21 +12,22 @@ import java.util.List;
 @Stateless
 public class UserRepository {
 
-    Logger log = LoggerFactory.getLogger(UserRepository.class);
+    private final String P_UNIT = "pUnit";
+    private Logger log = LoggerFactory.getLogger(UserRepository.class);
 
-    @PersistenceContext(unitName = "pUnit")
+    @PersistenceContext(unitName = P_UNIT)
     private EntityManager entityManager;
 
     public void addUser(User user) {
         if (user == null) {
-            log.info("user is empty");
-            return;
-        }
-        try {
-            entityManager.persist(user);
-            log.info("User: " + user.getName() + " " + user.getSurname() + " saved correctly.");
-        } catch (Exception e) {
-            log.info("Something goes wrong !!!");
+            log.info("user is empty (null)");
+        } else {
+            try {
+                entityManager.persist(user);
+                log.info("User: " + user.getName() + " " + user.getSurname() + " saved correctly.");
+            } catch (Exception e) {
+                log.info("Something goes wrong -- User -- !!!");
+            }
         }
     }
 

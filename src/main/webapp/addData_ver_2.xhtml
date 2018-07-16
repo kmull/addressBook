@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://java.sun.com/jsf/html">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <ui:include src="menu.xhtml"/>
+    <f:view>
+        <h:outputLabel value="Hello, setData - strona startowa ---> TEST"/>
+    </f:view>
+    <br/>
+    <br/>
+
+    <h:outputText value="Podaj użytkownika: "/>
+    <h:form>
+        <h:panelGrid columns="2" cellpadding="4">
+            <h:outputLabel value="podaj imie: "/>
+            <p:inputText id="nameInput" value="#{oneBean.user.name}"/>
+
+            <h:outputLabel value="podaj nazwisko: "/>
+            <p:inputText id="surnameInput" value="#{oneBean.user.surname}"/>
+
+            <h:outputLabel value="podaj wiek: "/>
+            <p:inputText id="ageInput" value="#{oneBean.user.age}"/>
+
+            <h:outputLabel value="podaj płeć: "/>
+
+            <p:selectOneMenu value="#{oneBean.user.gender}">
+                <f:selectItem itemValue="MAN" itemLabel="Man"/>
+                <f:selectItem itemValue="WOMAN" itemLabel="Woman"/>
+            </p:selectOneMenu>
+
+
+            <h:outputLabel value="podaj ulicę: "/>
+            <p:inputText id="streetInput" value="#{oneBean.address.street}"/>
+
+            <h:outputLabel value="podaj kod pocztowy: "/>
+            <p:inputText id="zipCodeInput" value="#{oneBean.address.zipCode}"/>
+
+            <h:outputLabel value="podaj miasto: "/>
+            <p:inputText id="cityInput" value="#{oneBean.address.city}"/>
+
+        </h:panelGrid>
+        <h:commandButton value="save" action="#{oneBean.addOneToOneData(oneBean.user, oneBean.address)}"/>
+    </h:form>
+    <br/>
+    <br/>
+
+    <!--<h:outputText value="Podaj dane: " />-->
+    <!--<h:form>-->
+    <!--<h:panelGrid columns="2" cellpadding="4">-->
+    <!--<h:outputLabel value="podaj ulicę: "/>-->
+    <!--<p:inputText id="streetInput" value="#{addressBean.address.street}"/>-->
+
+    <!--<h:outputLabel value="podaj kod pocztowy: "/>-->
+    <!--<p:inputText id="zipCodeInput" value="#{addressBean.address.zipCode}"/>-->
+
+    <!--<h:outputLabel value="podaj miasto: "/>-->
+    <!--<p:inputText id="cityInput" value="#{addressBean.address.city}"/>-->
+
+    <!--&lt;!&ndash;<h:outputLabel value="podaj user id: "/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<p:inputText id="addressInput" value="#{addressBean.address.user_address}"/>&ndash;&gt;-->
+
+    <!--</h:panelGrid>-->
+    <!--<h:commandButton value="save" action="#{addressBean.addAddress(addressBean.address)}"/>-->
+    <!--</h:form>-->
+
+
+</h:body>
+</html>

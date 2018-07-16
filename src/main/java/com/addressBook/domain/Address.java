@@ -24,10 +24,6 @@ public class Address implements Serializable {
     @OneToOne(mappedBy = "address")
     private User user_address;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public long getId() {
         return id;
     }

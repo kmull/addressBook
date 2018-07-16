@@ -21,10 +21,6 @@ public class Phone implements Serializable {
     @JoinColumn(name = "user_fk")
     private User user_phone;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public long getId() {
         return id;
     }
