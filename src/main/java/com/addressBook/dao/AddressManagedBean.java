@@ -10,8 +10,8 @@ import javax.inject.Inject;
 import java.util.List;
 
 @ManagedBean(name = "addressBean", eager = true)
-public class AddressBean {
-    private Logger log = LoggerFactory.getLogger(AddressBean.class);
+public class AddressManagedBean {
+    private Logger log = LoggerFactory.getLogger(AddressManagedBean.class);
 
     @Inject
     private AddressRepository addressRepository;

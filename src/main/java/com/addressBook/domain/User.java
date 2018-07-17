@@ -8,7 +8,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "ab_User")
-@NamedQuery(name = "user.getList", query = "FROM User")
+@NamedQueries({
+        @NamedQuery(name = "user.getList", query = "FROM User"),
+//        @NamedQuery(name = "user.getId", query = "SELECT u FROM User u ORDER BY u.name, u.surname")
+        @NamedQuery(name = "user.getId", query = "SELECT  u FROM  User u " +
+                "WHERE  u.name = :name AND u.surname = :surname")
+})
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 

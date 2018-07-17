@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
@@ -35,7 +36,20 @@ public class UserRepository {
         try {
             return entityManager.createNamedQuery("user.getList").getResultList();
         } catch (Exception e) {
-            log.info("Something goes wrong !!!");
+            log.info("Something goes wrong -- getUsers -- !!!");
+            return null;
+        }
+    }
+
+    public User getUserId(String name, String surname) {
+        try {
+            return (User) entityManager.createNamedQuery("user.getId")
+                    .setParameter("name", name)
+                    .setParameter("surname", surname)
+                    .getSingleResult();
+
+        } catch (NoResultException e) {
+            log.info("Something goes wrong -- getUserId -- !!!");
             return null;
         }
     }

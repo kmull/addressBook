@@ -12,8 +12,8 @@ import javax.inject.Inject;
 import java.util.List;
 
 @ManagedBean(name = "userBean", eager = true)
-public class UserBean {
-    private Logger log = LoggerFactory.getLogger(UserBean.class);
+public class UserManagedBean {
+    private Logger log = LoggerFactory.getLogger(UserManagedBean.class);
 
     @Inject
     private UserRepository userRepository;

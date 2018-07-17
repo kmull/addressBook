@@ -52,24 +52,20 @@
     <br/>
     <br/>
 
-    <!--<h:outputText value="Podaj dane: " />-->
-    <!--<h:form>-->
-    <!--<h:panelGrid columns="2" cellpadding="4">-->
-    <!--<h:outputLabel value="podaj ulicę: "/>-->
-    <!--<p:inputText id="streetInput" value="#{addressBean.address.street}"/>-->
+    <h:form>
+        <h:selectOneMenu value="#{phoneBean.names}">
+            <f:selectItems value="#{oneBean.usersNames}"/>
+        </h:selectOneMenu>
 
-    <!--<h:outputLabel value="podaj kod pocztowy: "/>-->
-    <!--<p:inputText id="zipCodeInput" value="#{addressBean.address.zipCode}"/>-->
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel value="type:"/>
+            <p:inputText id="typeInput" value="#{phoneBean.phone.type}"/>
 
-    <!--<h:outputLabel value="podaj miasto: "/>-->
-    <!--<p:inputText id="cityInput" value="#{addressBean.address.city}"/>-->
-
-    <!--&lt;!&ndash;<h:outputLabel value="podaj user id: "/>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p:inputText id="addressInput" value="#{addressBean.address.user_address}"/>&ndash;&gt;-->
-
-    <!--</h:panelGrid>-->
-    <!--<h:commandButton value="save" action="#{addressBean.addAddress(addressBean.address)}"/>-->
-    <!--</h:form>-->
+            <h:outputLabel value="number:"/>
+            <p:inputText id="numberInput" value="#{phoneBean.phone.number}"/>
+        </h:panelGrid>
+        <h:commandButton value="find" action="#{phoneBean.addTelephone(phoneBean.phone)}"/>
+    </h:form>
 
 
 </h:body>
