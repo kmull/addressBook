@@ -47,14 +47,6 @@ public class PhoneManagedBean {
         this.phone = phone;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-
     public String getNames() {
         return names;
     }
