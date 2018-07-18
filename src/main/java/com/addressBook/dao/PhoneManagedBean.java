@@ -55,5 +55,3 @@ public class PhoneManagedBean {
         this.names = names;
     }
 }
-
-//        user = userRepository.getUserId("Krzysztof", "Muller");
