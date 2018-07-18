@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-
+    <h:outputStylesheet name="CSS/myStyles.css"/>
 </h:head>
 
 <h:body>
@@ -15,6 +15,33 @@
         <h:outputLabel value="Hello, getData - strona startowa ---> TEST"/>
     </f:view>
 
+    <br/>
+    <br/>
+    <h3><h:outputText value="lista użytkowników:" style="margin-left: 20px"/></h3>
+    <h:form>
+        <h:dataTable value="#{oneBean.userLists}" var="o" styleClass="getData_1">
+            <h:column>
+                <f:facet name="header">id</f:facet>
+                #{o.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">imie</f:facet>
+                #{o.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">nazwisko</f:facet>
+                #{o.surname}
+            </h:column>
+            <h:column>
+                <f:facet name="header">wiek</f:facet>
+                #{o.age}
+            </h:column>
+            <h:column>
+                <f:facet name="header">płeć</f:facet>
+                #{o.gender}
+            </h:column>
+        </h:dataTable>
+    </h:form>
 
 </h:body>
 </html>

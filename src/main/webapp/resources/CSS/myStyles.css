@@ -1,0 +1,15 @@
+
+.getData_1 {
+    width: 80%;
+    margin: 0px 20px 0px 20px;
+}
+
+.getData_1 td,
+.getData_1 th {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.getData_1 th {
+    background: tan;
+}

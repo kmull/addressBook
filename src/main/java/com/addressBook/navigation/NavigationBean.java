@@ -29,14 +29,6 @@ public class NavigationBean {
             check = "getData";
         } else if (pageId.equals("3")) {
             check = "findData";
-        } else if (pageId.equals("4")) {
-            check = "addData_ver_2";
-//        } else if (pageId.equals("4")) {
-//            check = "addUser_ver2";
-//        } else if (pageId.equals("5")) {
-//            check = "getUser_ver2";
-//        } else if (pageId.equals("6")) {
-//            check = "getPhones";
         } else {
             check = "index";
         }

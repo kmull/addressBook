@@ -34,10 +34,30 @@ public class OneToOneManagedBean {
 
     public List<String> getUsersNames() {
         List<String> resultList = new ArrayList<>();
+        resultList.add(" -- select -- ");
+
         for (User tmpUser : getUserLists()) {
             resultList.add(tmpUser.getName() + " " + tmpUser.getSurname());
         }
         return resultList;
+    }
+
+//    public List<String> getDataTable() {
+//
+//        return ;
+//    }
+
+    public void getMyData() {
+        log.info("********************************************************************");
+//        List list = (List) userRepository.getDataJoinColummns();
+//        String[] aaa = String.valueOf(list.get(0)).split(" ");
+//        log.info(aaa[0]);
+//
+//        log.info("-- Data -- \n"+ String.valueOf(userRepository.getDataJoinColummns().get(1)));
+//        log.info(userRepository.getDataJoinColummns());
+
+
+//        return userRepository.getDataJoinColummns();
     }
 
     /*************** Getters and Setters*****************/
@@ -65,4 +85,6 @@ public class OneToOneManagedBean {
     public void setNames(String names) {
         this.names = names;
     }
+
+
 }

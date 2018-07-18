@@ -53,4 +53,24 @@ public class UserRepository {
             return null;
         }
     }
+
+    public List<User> getDataJoinColummns() {
+//        List list = entityManager.createQuery("SELECT DISTINCT p FROM User d JOIN d.address e " +
+//                "JOIN ")
+
+//        return entityManager.createQuery("SELECT User, Phone FROM " +
+//                "User user " +
+//                "JOIN Phone phone ")
+//                .getResultList();
+
+//        return entityManager.createQuery("SELECT User.name, User.surname, " +
+//                "Phone.type, Phone.number " +
+//                "FROM User JOIN Phone ").getResultList();
+//
+//        return entityManager.createQuery("SELECT a, b FROM " +
+//                "User a JOIN a.phones b ")
+//                .getResultList();
+
+        return (List<User>) entityManager.createQuery("SELECT e FROM User e").getResultList();
+    }
 }

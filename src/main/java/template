@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <ui:include src="menu.xhtml"/>
+    <f:view>
+        <h:outputLabel value="Hello, getData - strona startowa ---> TEST"/>
+    </f:view>
+
+    <h:form>
+        <!--<h:dataTable value="${oneBean.userLists}" var="u">-->
+            <!--<h:column>-->
+                <!--<f:facet name="header">id</f:facet>-->
+                <!--#{u.id}-->
+            <!--</h:column>-->
+            <!--<h:column>-->
+                <!--<f:facet name="header">imie</f:facet>-->
+                <!--#{u.name}-->
+            <!--</h:column>-->
+            <!--<h:column>-->
+                <!--<f:facet name="header">nazwisko</f:facet>-->
+                <!--#{u.surname}-->
+            <!--</h:column>-->
+            <!--<h:column>-->
+                <!--<f:facet name="header">adres</f:facet>-->
+                <!--#{u.name}-->
+            <!--</h:column>-->
+        <!--</h:dataTable>-->
+        <h:commandButton id="ff" value="daj mi" action="#{oneBean.getMyData}"/>
+    </h:form>
+
+</h:body>
+</html>
+
+
+
+@Entity
+@Table(name = "parts")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Parts.findAll", query = "SELECT p FROM Parts p"),
+    @NamedQuery(name = "Parts.findByPartsNo", query = "SELECT p FROM Parts p WHERE p.partsNo = :partsNo"),
+    @NamedQuery(name = "Parts.findByManPrtNo", query = "SELECT p FROM Parts p WHERE p.manPrtNo = :manPrtNo"),
+    @NamedQuery(name = "Parts.findByDescription", query = "SELECT p FROM Parts p WHERE p.description = :description"),
+    @NamedQuery(name = "Parts.findBySupplier", query = "SELECT p FROM Parts p WHERE p.supplier = :supplier")})
+public class Parts implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "partsNo")
+    private Collection<PartBuild> partBuildCollection;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "parts_no")
+    private String partsNo;
+    @Size(max = 50)
+    @Column(name = "man_prt_no")
+    private String manPrtNo;
+    @Size(max = 100)
+    @Column(name = "description")
+    private String description;
+    @Size(max = 50)
+    @Column(name = "supplier")
+    private String supplier;
+
+    public Parts() {
+    }
+
+    public Parts(String partsNo) {
+        this.partsNo = partsNo;
+    }

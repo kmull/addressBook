@@ -21,50 +21,54 @@
     <h:form>
         <h:panelGrid columns="2" cellpadding="4">
             <h:outputLabel value="podaj imie: "/>
-            <p:inputText id="nameInput" value="#{oneBean.user.name}"/>
+            <p:inputText id="nameInput" value="#{userBean.user.name}"/>
 
             <h:outputLabel value="podaj nazwisko: "/>
-            <p:inputText id="surnameInput" value="#{oneBean.user.surname}"/>
+            <p:inputText id="surnameInput" value="#{userBean.user.surname}"/>
 
             <h:outputLabel value="podaj wiek: "/>
-            <p:inputText id="ageInput" value="#{oneBean.user.age}"/>
+            <p:inputText id="ageInput" value="#{userBean.user.age}"/>
 
             <h:outputLabel value="podaj płeć: "/>
 
-            <p:selectOneMenu value="#{oneBean.user.gender}">
+            <p:selectOneMenu value="#{userBean.user.gender}">
                 <f:selectItem itemValue="MAN" itemLabel="Man"/>
                 <f:selectItem itemValue="WOMAN" itemLabel="Woman"/>
             </p:selectOneMenu>
 
 
             <h:outputLabel value="podaj ulicę: "/>
-            <p:inputText id="streetInput" value="#{oneBean.address.street}"/>
+            <p:inputText id="streetInput" value="#{addressBean.address.street}"/>
 
             <h:outputLabel value="podaj kod pocztowy: "/>
-            <p:inputText id="zipCodeInput" value="#{oneBean.address.zipCode}"/>
+            <p:inputText id="zipCodeInput" value="#{addressBean.address.zipCode}"/>
 
             <h:outputLabel value="podaj miasto: "/>
-            <p:inputText id="cityInput" value="#{oneBean.address.city}"/>
+            <p:inputText id="cityInput" value="#{addressBean.address.city}"/>
 
         </h:panelGrid>
-        <h:commandButton value="save" action="#{oneBean.addOneToOneData(oneBean.user, oneBean.address)}"/>
+        <h:commandButton value="save" action="#{userBean.addUser(userBean.user)}"/>
     </h:form>
     <br/>
     <br/>
 
+    <h:outputText value="Podaj dane: " />
     <h:form>
-        <h:selectOneMenu value="#{phoneBean.names}">
-            <f:selectItems value="#{oneBean.usersNames}"/>
-        </h:selectOneMenu>
+    <h:panelGrid columns="2" cellpadding="4">
+    <h:outputLabel value="podaj ulicę: "/>
+    <p:inputText id="streetInput" value="#{addressBean.address.street}"/>
 
-        <h:panelGrid columns="2" cellpadding="5">
-            <h:outputLabel value="type:"/>
-            <p:inputText id="typeInput" value="#{phoneBean.phone.type}"/>
+    <h:outputLabel value="podaj kod pocztowy: "/>
+    <p:inputText id="zipCodeInput" value="#{addressBean.address.zipCode}"/>
 
-            <h:outputLabel value="number:"/>
-            <p:inputText id="numberInput" value="#{phoneBean.phone.number}"/>
-        </h:panelGrid>
-        <h:commandButton value="find" action="#{phoneBean.addTelephone(phoneBean.phone)}"/>
+    <h:outputLabel value="podaj miasto: "/>
+    <p:inputText id="cityInput" value="#{addressBean.address.city}"/>
+
+    <!--<h:outputLabel value="podaj user id: "/>-->
+    <!--<p:inputText id="addressInput" value="#{addressBean.address.user_address}"/>-->
+
+    </h:panelGrid>
+    <h:commandButton value="save" action="#{addressBean.addAddress(addressBean.address)}"/>
     </h:form>
 
 
