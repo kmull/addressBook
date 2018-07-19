@@ -6,6 +6,12 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "ab_Phone")
+@NamedQuery(name = "phone.findNumbers", query = "SELECT p FROM Phone p " +
+        "WHERE p.user_phone.id = :findId")
+
+
+//@NamedQuery(name = "phone.findNumbers", query = "SELECT  u FROM  User u " +
+//        "WHERE  u.name = :name AND u.surname = :surname")
 public class Phone implements Serializable {
     private static final long serialVersionUID = 1L;
 

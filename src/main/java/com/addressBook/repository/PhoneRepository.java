@@ -6,7 +6,9 @@ import org.slf4j.LoggerFactory;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Stateless
 public class PhoneRepository {
@@ -24,8 +26,24 @@ public class PhoneRepository {
             try {
                 entityManager.persist(phone);
                 log.info("Phone: " + phone.getType() + " " + phone.getNumber() + " saved correctly.");
-            } catch (Exception e) {
+            } catch (NoResultException e) {
                 log.info("Something goes wrong -- Phone -- !!!");
+            }
+        }
+    }
+
+    public List<Phone> findTelephones(long findId) {
+        if (findId == 0) {
+            log.info(" -- user_id not found --");
+            return null;
+        } else {
+            try {
+                return entityManager.createNamedQuery("phone.findNumbers")
+                        .setParameter("findId", findId)
+                        .getResultList();
+            } catch (NoResultException e) {
+                log.info("Something goes wrong -- getUserId -- !!!");
+                return null;
             }
         }
     }

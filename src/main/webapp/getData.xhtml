@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
     <h:outputStylesheet name="CSS/myStyles.css"/>
 </h:head>
@@ -41,6 +41,20 @@
                 #{o.gender}
             </h:column>
         </h:dataTable>
+    </h:form>
+    <br/>
+    <br/>
+    <h:form>
+        <h:selectOneMenu value="#{phoneBean.names}">
+            <f:selectItems value="#{oneBean.usersNames}"/>
+        </h:selectOneMenu>
+        <h:commandButton value="numery" action="#{phoneBean.findTelephones}"/>
+        <br/>
+        <br/>
+        <c:if test="#{phoneBean.names != null}">
+            asd asd
+            #{}
+        </c:if>
     </h:form>
 
 </h:body>
