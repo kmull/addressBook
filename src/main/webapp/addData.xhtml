@@ -9,7 +9,6 @@
 <h:head>
     <h:outputStylesheet name="CSS/myStyles.css"/>
 </h:head>
-
 <h:body>
     <ui:include src="menu.xhtml"/>
     <f:view>
@@ -17,7 +16,6 @@
     </f:view>
     <br/>
     <br/>
-
     <h:outputText value="Podaj dane użytkownika: "/>
     <br/>
     <h:form>
@@ -42,7 +40,8 @@
             <h:outputLabel/><p:message for="ageInput" styleClass="red"/>
             <h:outputLabel value="podaj wiek: "/>
             <p:inputText id="ageInput" value="#{oneBean.user.age}" label="wiek">
-                <f:validateLength minimum="1" maximum="3"/>
+                <f:validateLength minimum="1" maximum="2"/>
+                <f:convertNumber integerOnly="true" />
             </p:inputText>
 
             <h:outputLabel value="podaj płeć: "/>
@@ -69,7 +68,6 @@
             <p:inputText id="cityInput" value="#{oneBean.address.city}" label="miasto">
                 <f:validateLength minimum="3" maximum="30"/>
             </p:inputText>
-
         </h:panelGrid>
         <h:commandButton value="save" action="#{oneBean.addOneToOneData(oneBean.user, oneBean.address)}"/>
     </h:form>
@@ -79,8 +77,6 @@
     <h:form>
         <h:outputText value="Podaj dane telefonu: "/>
         <br/>
-
-
         <h:panelGrid columns="2" cellpadding="4">
             <h:outputLabel/>
 
@@ -98,6 +94,7 @@
             <h:outputLabel value="number:"/>
             <p:inputText id="numberInput" value="#{phoneBean.phone.number}" label="number">
                 <f:validateLength minimum="3" maximum="9"/>
+                <f:convertNumber integerOnly="true" />
             </p:inputText>
         </h:panelGrid>
         <h:commandButton value="save" action="#{phoneBean.addTelephone(phoneBean.phone)}"/>
