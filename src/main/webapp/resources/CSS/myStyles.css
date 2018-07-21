@@ -1,15 +1,24 @@
 
-.getData_1 {
+.table_1 {
     width: 80%;
     margin: 0px 20px 0px 20px;
 }
 
-.getData_1 td,
-.getData_1 th {
+.table_1 td,
+.table_1 th {
     border: 1px solid black;
     text-align: center;
 }
 
-.getData_1 th {
+.table_1 th {
     background: tan;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.red {
+    color: red;
 }

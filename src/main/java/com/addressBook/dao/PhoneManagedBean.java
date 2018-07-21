@@ -17,7 +17,6 @@ public class PhoneManagedBean {
 
     @Inject
     private UserRepository userRepository;
-
     @Inject
     private PhoneRepository phoneRepository;
 
@@ -36,9 +35,16 @@ public class PhoneManagedBean {
                 user.getAge() + " " + user.getGender());
     }
 
-    public void findTelephones() {
-         log.info(String.valueOf(phoneRepository.findTelephones(findUser().getId())));
-//        return phoneRepository.findTelephones(findUser().getId());
+    public void addNames(String names) {
+        this.names = names;
+    }
+
+    public List<Phone> getPhoneList() {
+        return phoneRepository.getPhoneListRepository();
+    }
+
+    public List<Phone> getTelephones() {
+        return phoneRepository.findTelephonesRepository(findUser().getId());
     }
 
     private User findUser() {
@@ -63,4 +69,13 @@ public class PhoneManagedBean {
     public void setNames(String names) {
         this.names = names;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }

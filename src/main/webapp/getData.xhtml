@@ -19,7 +19,7 @@
     <br/>
     <h3><h:outputText value="lista użytkowników:" style="margin-left: 20px"/></h3>
     <h:form>
-        <h:dataTable value="#{oneBean.userLists}" var="o" styleClass="getData_1">
+        <h:dataTable value="#{oneBean.userLists}" var="o" styleClass="table_1">
             <h:column>
                 <f:facet name="header">id</f:facet>
                 #{o.id}
@@ -40,6 +40,32 @@
                 <f:facet name="header">płeć</f:facet>
                 #{o.gender}
             </h:column>
+            <h:column>
+                <f:facet name="header">foreign key adres</f:facet>
+                #{o.address.id}
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <br/>
+    <br/>
+    <h:form>
+        <h:dataTable value="#{phoneBean.phoneList}"  var="p" styleClass="table_1">
+            <h:column>
+                <f:facet name="header">id</f:facet>
+                #{p.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">type</f:facet>
+                #{p.type}
+            </h:column>
+            <h:column>
+                <f:facet name="header">number</f:facet>
+                #{p.number}
+            </h:column>
+            <h:column>
+                <f:facet name="header">foreign key</f:facet>
+                #{p.user_phone.id}
+            </h:column>
         </h:dataTable>
     </h:form>
     <br/>
@@ -48,12 +74,24 @@
         <h:selectOneMenu value="#{phoneBean.names}">
             <f:selectItems value="#{oneBean.usersNames}"/>
         </h:selectOneMenu>
-        <h:commandButton value="numery" action="#{phoneBean.findTelephones}"/>
+        <h:commandButton value="numery" action="#{phoneBean.addNames(phoneBean.names)}"/>
         <br/>
         <br/>
         <c:if test="#{phoneBean.names != null}">
-            asd asd
-            #{}
+            <h:dataTable value="#{phoneBean.telephones}" var="t" styleClass="table_1">
+                <h:column>
+                    <f:facet name="header">id</f:facet>
+                    #{t.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">typ</f:facet>
+                    #{t.type}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">numer</f:facet>
+                    #{t.number}
+                </h:column>
+            </h:dataTable>
         </c:if>
     </h:form>
 

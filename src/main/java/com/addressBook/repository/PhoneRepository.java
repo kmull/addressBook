@@ -32,7 +32,16 @@ public class PhoneRepository {
         }
     }
 
-    public List<Phone> findTelephones(long findId) {
+    public List<Phone> getPhoneListRepository() {
+        try {
+            return entityManager.createNamedQuery("phone.getList").getResultList();
+        } catch (Exception e) {
+            log.info("Something goes wrong -- getPhoneListRepository -- !!!");
+            return null;
+        }
+    }
+
+    public List<Phone> findTelephonesRepository(long findId) {
         if (findId == 0) {
             log.info(" -- user_id not found --");
             return null;

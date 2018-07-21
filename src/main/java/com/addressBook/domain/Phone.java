@@ -6,12 +6,13 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "ab_Phone")
-@NamedQuery(name = "phone.findNumbers", query = "SELECT p FROM Phone p " +
-        "WHERE p.user_phone.id = :findId")
+@NamedQueries({
+        @NamedQuery(name = "phone.findNumbers", query = "SELECT p FROM Phone p " +
+                "WHERE p.user_phone.id = :findId"),
+        @NamedQuery(name = "phone.getList", query = "FROM Phone")
+})
 
 
-//@NamedQuery(name = "phone.findNumbers", query = "SELECT  u FROM  User u " +
-//        "WHERE  u.name = :name AND u.surname = :surname")
 public class Phone implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -23,7 +24,7 @@ public class Phone implements Serializable {
     private String type;
     private String number;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "user_fk")
     private User user_phone;
 

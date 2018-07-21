@@ -1,5 +1,6 @@
 package com.addressBook.dao;
 
+import com.addressBook.controler.Controler;
 import com.addressBook.domain.Address;
 import com.addressBook.domain.User;
 import com.addressBook.repository.UserRepository;
@@ -14,16 +15,23 @@ import java.util.List;
 @ManagedBean(name = "oneBean")
 public class OneToOneManagedBean {
     private final String LOG_ADD_DATA = " -- addOneToOneData --";
-    private Logger log = LoggerFactory.getLogger(AddressManagedBean.class);
+    private Logger log = LoggerFactory.getLogger(OneToOneManagedBean.class);
 
     @Inject
     private UserRepository userRepository;
     private User user = new User();
     private Address address = new Address();
     private String names;
+    private boolean messageErrorAddUser = true;
 
     public void addOneToOneData(User user, Address address) {
         log.info(LOG_ADD_DATA);
+        messageErrorAddUser = Controler.checkIfUserError(getUserLists(), user);
+
+        if(!messageErrorAddUser){
+            log.info(user.getName() + " " + user.getSurname() + " już istnieje w bazie danych");
+            return;
+        }
         user.setAddress(address);
         userRepository.addUser(user);
     }
@@ -40,24 +48,6 @@ public class OneToOneManagedBean {
             resultList.add(tmpUser.getName() + " " + tmpUser.getSurname());
         }
         return resultList;
-    }
-
-//    public List<String> getDataTable() {
-//
-//        return ;
-//    }
-
-    public void getMyData() {
-        log.info("********************************************************************");
-//        List list = (List) userRepository.getDataJoinColummns();
-//        String[] aaa = String.valueOf(list.get(0)).split(" ");
-//        log.info(aaa[0]);
-//
-//        log.info("-- Data -- \n"+ String.valueOf(userRepository.getDataJoinColummns().get(1)));
-//        log.info(userRepository.getDataJoinColummns());
-
-
-//        return userRepository.getDataJoinColummns();
     }
 
     /*************** Getters and Setters*****************/
@@ -86,5 +76,11 @@ public class OneToOneManagedBean {
         this.names = names;
     }
 
+    public boolean isMessageErrorAddUser() {
+        return messageErrorAddUser;
+    }
 
+    public void setMessageErrorAddUser(boolean messageErrorAddUser) {
+        this.messageErrorAddUser = messageErrorAddUser;
+    }
 }
